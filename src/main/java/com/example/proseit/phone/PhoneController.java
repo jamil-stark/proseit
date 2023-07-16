@@ -11,15 +11,18 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/phone")
 public class PhoneController {
-
-    private final PhoneService phoneService;
-
-    public PhoneController(PhoneService phoneService) {
-        this.phoneService = phoneService;
-    }
-
+    
     @GetMapping
     public List<Phone> getPhones() {
-        return phoneService.getPhones();
+        return List.of(
+                new Phone(
+                        1L,
+                        "Samsung",
+                        "SJSG4909495",
+                        "S10",
+                        LocalDate.of(2017, Month.JUNE, 21),
+                        500000
+                )
+        );
     }
 }
