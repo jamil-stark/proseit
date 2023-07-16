@@ -1,8 +1,24 @@
 package com.example.proseit.phone;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+
+// @Entity is for hibernate, @Table is for table
+@Entity
+@Table
 public class Phone {
+    @Id
+    @SequenceGenerator(
+            name = "phone_sequence",
+            sequenceName = "phone_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "phone_sequence"
+    )
     private Long id;
     private String brand;
     private String emei;
