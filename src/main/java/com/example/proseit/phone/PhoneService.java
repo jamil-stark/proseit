@@ -1,8 +1,7 @@
 package com.example.proseit.phone;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -12,16 +11,17 @@ import java.util.List;
 //  We can use @Component or @Service, though the latter is preferred.
 @Service
 public class PhoneService {
+    // Instead of using the static list, we use the instance.findAll()
+
+    private final PhoneRepository phoneRepository;
+
+    @Autowired
+    public PhoneService(PhoneRepository phoneRepository) {
+        this.phoneRepository = phoneRepository;
+    }
+
+
     public List<Phone> getPhones() {
-        return List.of(
-                new Phone(
-                        1L,
-                        "Samsung",
-                        "SJSG4909495",
-                        "S10",
-                        LocalDate.of(2017, Month.JUNE, 21),
-                        500000
-                )
-        );
+        return phoneRepository.findAll();
     }
 }
