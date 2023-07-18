@@ -3,6 +3,7 @@ package com.example.proseit.phone;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 
 // @Entity is for hibernate, @Table is for table
@@ -25,6 +26,9 @@ public class Phone {
     private String model;
     private LocalDate releaseDay;
     private Integer price;
+    @Transient          // means we don't want the age to be a column in our db.
+    private Integer age;
+
 
     public Phone() {
     }
@@ -90,6 +94,14 @@ public class Phone {
         return price;
     }
 
+    public Integer getAge() {
+        return Period.between(this.releaseDay, LocalDate.now()).getYears();
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     public void setPrice(Integer price) {
         this.price = price;
     }
@@ -103,6 +115,7 @@ public class Phone {
                 ", model='" + model + '\'' +
                 ", releaseDay=" + releaseDay +
                 ", price=" + price +
+                ", age=" + age +
                 '}';
     }
 }

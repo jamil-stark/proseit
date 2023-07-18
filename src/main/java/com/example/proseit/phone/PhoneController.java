@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping(path = "api/v1/phone")
 public class PhoneController {
     private final PhoneService phoneService;
-    //The above declaration will not work because there is no instantiation.
+    //The above declaration would not work because there is no instantiation.
     //We need to use @Autowired annotation on the constructor.
 
     //The class PhoneService should be a spring bean
