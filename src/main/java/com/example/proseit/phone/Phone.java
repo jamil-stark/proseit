@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 
-
 // @Entity is for hibernate, @Table is for table
 @Entity
 @Table

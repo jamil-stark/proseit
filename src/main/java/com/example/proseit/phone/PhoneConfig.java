@@ -27,7 +27,6 @@ public class PhoneConfig {
                       LocalDate.of(2017, JUNE, 21),
                       500000
               );
-
               Phone pop2 = new Phone(
                       "Techno",
                       "TCH653YYE89",
@@ -35,7 +34,6 @@ public class PhoneConfig {
                       LocalDate.of(2012, MAY, 1),
                       230000
               );
-
               repository.saveAll(
                       List.of(s10, pop2)
               );

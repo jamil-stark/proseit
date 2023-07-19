@@ -3,8 +3,6 @@ package com.example.proseit.phone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 //  This should be a spring bean.
@@ -23,5 +21,10 @@ public class PhoneService {
 
     public List<Phone> getPhones() {
         return phoneRepository.findAll();
+    }
+
+    public void addNewPhone(Phone phone) {
+        // For the moment let us just print the phone in console
+        System.out.println(phone);
     }
 }
