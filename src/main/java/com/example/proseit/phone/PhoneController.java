@@ -1,9 +1,7 @@
 package com.example.proseit.phone;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,14 @@ public class PhoneController {
         return phoneService.getPhones();
     }
 
+    // A method is defined registerNewPhone() having a Phone parameter.
+    // Parameters of the above method are annotated with @RequestBody
+    // A method is defined in phoneService and is invoked here in our method that was annotated by @PostMapping
+    // We are taking the request from request body hence the annotation
+
+    @PostMapping
+    public void registerNewPhone(@RequestBody Phone phone){
+        phoneService.addNewPhone(phone);
+    }
 
 }
