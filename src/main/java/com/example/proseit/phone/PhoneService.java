@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //  This should be a spring bean.
 //  We can use @Component or @Service, though the latter is preferred.
@@ -25,6 +26,11 @@ public class PhoneService {
 
     public void addNewPhone(Phone phone) {
         // For the moment let us just print the phone in console
-        System.out.println(phone);
+        Optional<Phone> phoneOptional = phoneRepository.findPhoneByEmei(phone.getEmei());
+        if (phoneOptional.isPresent()){
+            throw new IllegalStateException("EMEI already exists");
+
+        }
+        phoneRepository.save(phone);
     }
 }
