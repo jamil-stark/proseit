@@ -34,4 +34,10 @@ public class PhoneController {
         phoneService.addNewPhone(phone);
     }
 
+    // id specified, it is added on the path
+    @DeleteMapping(path = "{phoneId}")
+    public void deletePhone(@PathVariable("phoneId") Long phoneId){
+        phoneService.deletePhone(phoneId);
+    }
+
 }

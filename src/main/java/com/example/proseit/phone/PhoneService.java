@@ -33,4 +33,12 @@ public class PhoneService {
         }
         phoneRepository.save(phone);
     }
+
+    public void deletePhone(Long phoneId) {
+        boolean exists = phoneRepository.existsById(phoneId);
+        if (!exists){
+            throw new IllegalStateException("Student with " + phoneId + " doesn't exist");
+        }
+        phoneRepository.deleteById(phoneId);
+    }
 }
